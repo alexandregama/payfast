@@ -3,6 +3,11 @@
 ### Infrastructure
 - [ ] Simulate database with Map
 
+### Retrieve Users
+- [ ] Endpoint to retrieve User from its **Id**, responding **JSON** format
+- [ ] Endpoint to retrieve User from its **Id**, responding **XML** format
+- [ ] Endpoint to retrieve User from its **Id**, responding **Text Plain** format
+
 ### Retrieve Payments
 - [ ] Endpoint to retrieve Payment from its **Id**, responding **JSON** format
 - [ ] Endpoint to retrieve Payment from its **Id**, responding **XML** format
