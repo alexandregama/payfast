@@ -1,7 +1,8 @@
 # Payfast
 
 ### Infrastructure
-- [ ] Simulate database with Map
+- [x] Simulate Payments database with Map
+- [x] Simulate Users database with Map
 
 ### Retrieve Users
 - [ ] Endpoint to retrieve User from its **Id**, responding **JSON** format
