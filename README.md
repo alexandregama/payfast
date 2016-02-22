@@ -50,4 +50,46 @@ public class User {
 }
 ```
 
+## Endpoint commands
+
+To retrieve a user by its id, returning JSON format:
+
+```bash
+$ curl -i -X GET -H "accept: application/json" http://localhost:8080/payfast/users/1
+```
+Possible return:
+```bash
+HTTP/1.1 200 OK
+Connection: keep-alive
+X-Powered-By: Undertow/1
+Server: WildFly/8
+Transfer-Encoding: chunked
+Content-Type: application/json
+Date: Mon, 22 Feb 2016 23:36:35 GMT
+
+{"id":1,"name":"Alexandre Gama"}
+```
+
+To retrieve a user by its id, returning XML format:
+
+```bash
+$ curl -i -X GET -H "accept: application/xml" http://localhost:8080/payfast/users/1
+```
+Possible return:
+```bash
+HTTP/1.1 200 OK
+Connection: keep-alive
+X-Powered-By: Undertow/1
+Server: WildFly/8
+Content-Type: application/xml
+Content-Length: 105
+Date: Mon, 22 Feb 2016 23:37:18 GMT
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<user>
+   <id>1</id>
+   <name>Alexandre Gama</name>
+</user>
+```
+
 
