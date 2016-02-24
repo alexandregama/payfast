@@ -16,7 +16,7 @@ public class PaymentResource {
 	
 	@GET
 	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response payment(@PathParam("id") Long id) {
 		System.out.println("Retrieving paymento from id=" + id);
 		
