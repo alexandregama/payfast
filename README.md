@@ -90,6 +90,34 @@ Date: Mon, 22 Feb 2016 23:37:18 GMT
 </user>
 ```
 
+To save a new **Transaction** using **JSON** format
+
+```bash
+$ curl -i -X POST http://localhost:8080/payfast/users \
+	  -d '{"id":"1","name":"Fernando Gama"}' \
+	  -H "Content-Type:application/json"
+```
+
+Response
+
+```bash
+HTTP/1.1 201 Created
+Connection: keep-alive
+X-Powered-By: Undertow/1
+Server: WildFly/8
+Location: http://localhost:8080/users/5
+Transfer-Encoding: chunked
+Content-Type: application/json
+Date: Wed, 24 Feb 2016 12:11:23 GMT
+
+{
+  "id": 5,
+  "name": "Fernando Gama"
+}
+```
+
+Note that we have a content location for the new resource created: ```bash Location: http://localhost:8080/users/5``` 
+
 ## Payment Endpoint
 
 To retrieve a **payment** by its **id**, returning JSON format:
@@ -173,35 +201,6 @@ Date: Wed, 24 Feb 2016 11:50:49 GMT
   }
 }
 ```
-
-To save a new **Transaction** using **JSON** format
-
-```bash
-$ curl -i -X POST http://localhost:8080/payfast/users \
-	  -d '{"id":"1","name":"Fernando Gama"}' \
-	  -H "Content-Type:application/json"
-```
-
-Response
-
-```bash
-HTTP/1.1 201 Created
-Connection: keep-alive
-X-Powered-By: Undertow/1
-Server: WildFly/8
-Location: http://localhost:8080/users/5
-Transfer-Encoding: chunked
-Content-Type: application/json
-Date: Wed, 24 Feb 2016 12:11:23 GMT
-
-{
-  "id": 5,
-  "name": "Fernando Gama"
-}
-```
-
-Note that we have a content location for the new resource created: ```bash Location: http://localhost:8080/users/5``` 
-
 
 ## HTTP Status Code
 
