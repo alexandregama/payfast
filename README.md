@@ -7,14 +7,12 @@
 - [x] Simulate Users database with Map
 
 ###### Retrieve Users
-- [ ] Endpoint to retrieve User from its **Id**, responding **JSON** format
-- [ ] Endpoint to retrieve User from its **Id**, responding **XML** format
-- [ ] Endpoint to retrieve User from its **Id**, responding **Text Plain** format
+- [x] Endpoint to retrieve User from its **Id**, responding **JSON** format
+- [x] Endpoint to retrieve User from its **Id**, responding **XML** format
 
 ###### Retrieve Payments
-- [ ] Endpoint to retrieve Payment from its **Id**, responding **JSON** format
-- [ ] Endpoint to retrieve Payment from its **Id**, responding **XML** format
-- [ ] Endpoint to retrieve Payment from its **Id**, responding **Text Plain** format
+- [x] Endpoint to retrieve Payment from its **Id**, responding **JSON** format
+- [x] Endpoint to retrieve Payment from its **Id**, responding **XML** format
 
 ###### Save Transactions
 - [ ] Endpoint to save a new Transaction formatted with **JSON**
