@@ -1,4 +1,4 @@
-package com.payfast;
+package com.payfast.endpoint.user;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
