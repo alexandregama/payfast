@@ -1,4 +1,4 @@
-package com.payfast;
+package com.payfast.endpoint.payment;
 
 import java.util.Optional;
 

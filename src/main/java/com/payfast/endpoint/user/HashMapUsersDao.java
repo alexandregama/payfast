@@ -1,4 +1,4 @@
-package com.payfast;
+package com.payfast.endpoint.user;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +18,19 @@ public class HashMapUsersDao implements Users {
 	@Override
 	public Optional<User> findBy(Long id) {
 		return Optional.ofNullable(database.get(id));
+	}
+
+	@Override
+	public User saveNew(User user) {
+		Long newId = database.keySet()
+			.stream()
+			.max(Long::compareTo)
+			.get() + 1;
+		
+		user.setId(newId);
+		database.put(newId, user);
+		
+		return user;
 	}
 
 }
