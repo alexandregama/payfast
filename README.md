@@ -142,6 +142,38 @@ Retrieving a payment that supports **XML** format
 $ curl -i -X GET -H "accept:application/xml" http://localhost:8080/payfast/payments/1
 ```
 
+## Transaction Endpoint
+
+To retrieve a **Transaction** from its id, using **JSON** format
+
+```bash
+$ curl -i -X GET -H "accept:application/json" http://localhost:8080/payfast/transactions/1
+```
+
+Response
+
+```bash
+HTTP/1.1 200 OK
+Connection: keep-alive
+X-Powered-By: Undertow/1
+Server: WildFly/8
+Transfer-Encoding: chunked
+Content-Type: application/json
+Date: Wed, 24 Feb 2016 11:50:49 GMT
+
+{
+  "id": 1,
+  "user": {
+    "id": 1,
+    "name": "Alexandre Gama"
+  },
+  "payment": {
+    "id": 1,
+    "status": "INPROGRESS"
+  }
+}
+```
+
 ## Some Errors
 
 Tip for the following error:
