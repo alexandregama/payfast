@@ -177,8 +177,9 @@ Date: Wed, 24 Feb 2016 11:50:49 GMT
 To save a new **Transaction** using **JSON** format
 
 ```bash
-$ curl -i -X POST http://localhost:8080/payfast/users -d '{"id":"1","name":"Fernando Gama"}' 
-  -H "Content-Type:application/json"
+$ curl -i -X POST http://localhost:8080/payfast/users \
+	  -d '{"id":"1","name":"Fernando Gama"}' \
+	  -H "Content-Type:application/json"
 ```
 
 Response
