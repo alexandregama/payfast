@@ -32,6 +32,7 @@ public class UserResource {
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response saveNewUser(User user) throws URISyntaxException {
+		System.out.println(user);
 		User userSaved = users.saveNew(user);
 		
 		Response response = Response
