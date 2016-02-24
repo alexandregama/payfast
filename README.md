@@ -142,6 +142,8 @@ Retrieving a payment that supports **XML** format
 $ curl -i -X GET -H "accept:application/xml" http://localhost:8080/payfast/payments/1
 ```
 
+## Some Errors
+
 Tip for the following error:
 ```bash
 Class has two properties of the same name "id"
@@ -262,3 +264,58 @@ If you are in a standalone mode, you need the following dependencie:
 	<version>2.4</version>
 </dependency>
 ```
+
+If you have got the following error:
+
+```bash
+javax.ws.rs.client.ResponseProcessingException: javax.ws.rs.ProcessingException: Unable to find a MessageBodyReader of content-type application/json and type class br.com.payfast.Payment
+	at org.jboss.resteasy.client.jaxrs.internal.ClientInvocation.extractResult(ClientInvocation.java:140)
+	at org.jboss.resteasy.client.jaxrs.internal.ClientInvocation.invoke(ClientInvocation.java:444)
+	at org.jboss.resteasy.client.jaxrs.internal.ClientInvocationBuilder.get(ClientInvocationBuilder.java:165)
+	at br.com.payfast.client.UserResourceTest.shouldRetrieveAnUserByItsId(UserResourceTest.java:19)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: javax.ws.rs.ProcessingException: Unable to find a MessageBodyReader of content-type application/json and type class br.com.payfast.Payment
+	at org.jboss.resteasy.core.interception.ClientReaderInterceptorContext.throwReaderNotFound(ClientReaderInterceptorContext.java:39)
+	at org.jboss.resteasy.core.interception.AbstractReaderInterceptorContext.getReader(AbstractReaderInterceptorContext.java:73)
+	at org.jboss.resteasy.core.interception.AbstractReaderInterceptorContext.proceed(AbstractReaderInterceptorContext.java:50)
+	at org.jboss.resteasy.plugins.interceptors.encoding.GZIPDecodingInterceptor.aroundReadFrom(GZIPDecodingInterceptor.java:59)
+	at org.jboss.resteasy.core.interception.AbstractReaderInterceptorContext.proceed(AbstractReaderInterceptorContext.java:53)
+	at org.jboss.resteasy.client.jaxrs.internal.ClientResponse.readFrom(ClientResponse.java:248)
+	at org.jboss.resteasy.client.jaxrs.internal.ClientResponse.readEntity(ClientResponse.java:181)
+	at org.jboss.resteasy.specimpl.BuiltResponse.readEntity(BuiltResponse.java:211)
+	at org.jboss.resteasy.client.jaxrs.internal.ClientInvocation.extractResult(ClientInvocation.java:104)
+	... 25 more
+
+```
+
+Maybe you are trying to call the ClientBuilder API from a standalone mode. If its true, you must get the following dependency:
+```xml
+ <dependency>
+	<groupId>commons-io</groupId>
+	<artifactId>commons-io</artifactId>
+	<version>2.4</version>
+</dependency>
+```
+
+The possible problem is tha RestEasy is unable to find the Jackson provider
