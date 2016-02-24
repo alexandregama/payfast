@@ -20,4 +20,17 @@ public class HashMapUsersDao implements Users {
 		return Optional.ofNullable(database.get(id));
 	}
 
+	@Override
+	public User saveNew(User user) {
+		Long newId = database.keySet()
+			.stream()
+			.max(Long::compareTo)
+			.get() + 1;
+		
+		user.setId(newId);
+		database.put(newId, user);
+		
+		return user;
+	}
+
 }
