@@ -47,6 +47,7 @@ public class PaymentResource {
 		
 		Response response = Response
 				.created(new URI(PAYMENT_RESOURCE_URI + savedPayment.getId()))
+				.entity(savedPayment)
 				.build();
 		
 		System.out.println("Payment created: " + savedPayment);
