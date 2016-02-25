@@ -170,6 +170,28 @@ Retrieving a payment that supports **XML** format
 $ curl -i -X GET -H "accept:application/xml" http://localhost:8080/payfast/payments/1
 ```
 
+Creating a new Payment
+
+```bash
+$ curl -i -X POST http://localhost:8080/payfast/payments \
+	  -H "Content-Type:application/json" \
+	  -d '{"id":"1", "status":"INPROGRESS"}'
+```
+
+Return
+
+```bash
+HTTP/1.1 201 Created
+Connection: keep-alive
+X-Powered-By: Undertow/1
+Server: WildFly/8
+Location: http://localhost:8080/payments/7
+Content-Length: 0
+Date: Thu, 25 Feb 2016 10:52:08 GMT
+```
+
+Note that the Endpoints returns a resource location for the new Payment created ```bash http://localhost:8080/payments/7```
+
 ## Transaction Endpoint
 
 To retrieve a **Transaction** from its id, using **JSON** format
