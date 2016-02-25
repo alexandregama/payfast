@@ -174,8 +174,8 @@ Creating a new Payment
 
 ```bash
 $ curl -i -X POST http://localhost:8080/payfast/payments \
-	  -H "Content-Type:application/json" \
-	  -d '{"id":"1", "status":"INPROGRESS"}'
+	    -H "Content-Type:application/json" \
+	    -d '{"id":"1", "value": "100", "status":"INPROGRESS"}'
 ```
 
 Return
@@ -188,9 +188,31 @@ Server: WildFly/8
 Location: http://localhost:8080/payments/7
 Content-Length: 0
 Date: Thu, 25 Feb 2016 10:52:08 GMT
+
+{
+  "id": 8,
+  "status": "STARTED",
+  "value": 100,
+  "links": {
+    "link": [
+      {
+        "rel": "confirm",
+        "uri": "http://localhost:8080/payfast/payments/8",
+        "method": "PUT"
+      },
+      {
+        "rel": "cancel",
+        "uri": "http://localhost:8080/payfast/payments/8",
+        "method": "DELETE"
+      }
+    ]
+  }
+}
 ```
 
 Note that the Endpoints returns a resource location for the new Payment created ```bash http://localhost:8080/payments/7```
+
+Note also that we received a response with the next steps for the created resource. This is a HATEOAS approach.
 
 ## Transaction Endpoint
 
