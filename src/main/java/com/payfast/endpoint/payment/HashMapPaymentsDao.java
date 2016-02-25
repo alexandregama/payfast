@@ -22,4 +22,14 @@ public class HashMapPaymentsDao implements Payments {
 		return Optional.ofNullable(database.get(id));
 	}
 
+	@Override
+	public Payment saveNew(Payment payment) {
+		Long nextId = database.keySet().stream().max(Long::compareTo).get() + 1;
+		
+		payment.setId(nextId);
+		database.put(nextId, payment);
+		
+		return payment;
+	}
+
 }
