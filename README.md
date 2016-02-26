@@ -264,7 +264,7 @@ Date: Wed, 24 Feb 2016 11:50:49 GMT
 
 301 - Moved
 
-304 - Not Modified
+304 - Not Modified (Used to indicate that the resource is up to date and will use browse cache)
 
 ##### ERROR 4xx
 
