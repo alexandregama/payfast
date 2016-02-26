@@ -1,14 +1,17 @@
 package com.payfast.endpoint.user;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 public class HashMapUsersDao implements Users {
 
-	private Map<Long, User> database = new HashMap<>();
+	private static Map<Long, User> database = new HashMap<>();
 	
-	public HashMapUsersDao() {
+	static {
 		database.put(1L, new User(1L, "Alexandre Gama"));
 		database.put(2L, new User(2L, "Mathew Perry"));
 		database.put(3L, new User(3L, "Jessica Alba"));
@@ -31,6 +34,19 @@ public class HashMapUsersDao implements Users {
 		database.put(newId, user);
 		
 		return user;
+	}
+
+	@Override
+	public User update(User user) {
+		database.put(user.getId(), user);
+		return user;
+	}
+
+	@Override
+	public List<User> findAll() {
+		Collection<User> list = database.values();
+		
+		return new ArrayList<>(list);
 	}
 
 }
