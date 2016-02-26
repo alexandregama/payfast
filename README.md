@@ -90,7 +90,27 @@ Date: Mon, 22 Feb 2016 23:37:18 GMT
 </user>
 ```
 
-To save a new **Transaction** using **JSON** format
+To call the User Endpoint to retrieve a user using cached browser
+
+```bash
+$ curl -i -X GET http://localhost:8080/payfast/users/cached/1 -H "If-None-Match:Alexandre Gama" -H "Accept:application/json"
+```
+
+We are sending to server the ```bash If-None-Match``` Header with a name **Alexandre Gama** indicating that it is our eTag value. If it match to the cached value, then we will receive:
+
+```bash
+HTTP/1.1 304 Not Modified
+Connection: keep-alive
+Cache-Control: no-transform, max-age=50000
+X-Powered-By: Undertow/1
+Server: WildFly/8
+Content-Length: 0
+Date: Fri, 26 Feb 2016 11:02:59 GMT
+```
+
+Note that we received a status code **304** indicating that the resource has not been modified since the last requested.
+
+To save a new **User** using **JSON** format
 
 ```bash
 $ curl -i -X POST http://localhost:8080/payfast/users \
@@ -245,27 +265,6 @@ Date: Wed, 24 Feb 2016 11:50:49 GMT
   }
 }
 ```
-
-To call the User Endpoint to retrieve a user using cached browser
-
-```bash
-$ curl -i -X GET http://localhost:8080/payfast/users/cached/1 -H "If-None-Match:Alexandre Gama" -H "Accept:application/json"
-```
-
-We are sending to server the ```bash If-None-Match``` Header with a name **Alexandre Gama** indicating that it is our eTag value. If it match to the cached value, then we will receive:
-
-```bash
-HTTP/1.1 304 Not Modified
-Connection: keep-alive
-Cache-Control: no-transform, max-age=50000
-X-Powered-By: Undertow/1
-Server: WildFly/8
-Content-Length: 0
-Date: Fri, 26 Feb 2016 11:02:59 GMT
-```
-
-Note that we received a status code **304** indicating that the resource has not been modified since the last requested.
-
 
 ## HTTP Status Code
 
