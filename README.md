@@ -138,6 +138,28 @@ Date: Wed, 24 Feb 2016 12:11:23 GMT
 
 Note that we have a content location for the new resource created: ```bash Location: http://localhost:8080/users/5``` 
 
+To update a **User**
+
+```bash
+$ curl -i -X PUT http://localhost:8080/payfast/users/1 \
+	  -H "Content-Type:application/json" \
+	  -H "Accept:application/json" \
+	  -d '{"id":"1", "name":"Gaminha"}'
+```
+Will return the following:
+
+```bash
+HTTP/1.1 200 OK
+Connection: keep-alive
+X-Powered-By: Undertow/1
+Server: WildFly/8
+Transfer-Encoding: chunked
+Content-Type: application/json
+Date: Sat, 27 Feb 2016 10:53:14 GMT
+
+{"id":1,"name":"Gaminha"}
+``
+
 ## Payment Endpoint
 
 To retrieve a **payment** by its **id**, returning JSON format:
