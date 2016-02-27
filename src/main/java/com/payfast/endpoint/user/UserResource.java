@@ -107,4 +107,19 @@ public class UserResource {
 		
 		return response;
 	}
+	
+	@PATCH
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
+	@Path("/{id}")
+	public Response updateByPatch(User user) {
+		System.out.println(user);
+		
+		Response response = Response
+				.ok(user)
+				.build();
+		
+		return response;
+	}
+	
 }
